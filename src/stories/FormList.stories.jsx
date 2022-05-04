@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { useForm, formList } from '@mantine/form';
 import { TextInput, Switch, Group, ActionIcon, Box, Text, Button, Code } from '@mantine/core';
@@ -10,6 +10,10 @@ function Demo() {
         employees: formList([{ name: '', active: false }]),
       },
     });
+
+    useEffect((val) => {
+        console.log("Value changed");
+    }, [form.values])
   
     const fields = form.values.employees.map((_, index) => (
       <Group key={index} mt="xs">

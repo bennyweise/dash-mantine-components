@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {TextInput, Checkbox, Button, Group, Box} from '@mantine/core';
@@ -21,6 +21,15 @@ const Form = (props) => {
                 /^\S+@\S+$/.test(value) ? null : 'Invalid email',
         },
     });
+
+    useEffect(
+        (values) => {
+            console.log('Value changed');
+            console.log(values);
+            setProps({value: form.values});
+        },
+        [form.values]
+    );
 
     return (
         <Box sx={{maxWidth: 300}} mx="auto">
