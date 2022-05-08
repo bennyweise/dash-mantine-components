@@ -1,8 +1,47 @@
 import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {TextInput, Checkbox, Button, Group, Box} from '@mantine/core';
+import {
+    Checkbox,
+    Chips,
+    ColorInput,
+    ColorPicker,
+    JsonInput,
+    MultiSelect,
+    NumberInput,
+    PasswordInput,
+    RadioGroup,
+    SegmentedControl,
+    Select,
+    Slider,
+    Switch,
+    Textarea,
+    TextInput,
+    TransferList,
+    Button,
+    Group,
+    Box,
+} from '@mantine/core';
 import {useForm} from '@mantine/form';
+
+const componentMap = {
+    checkbox: Checkbox,
+    chips: Chips,
+    colorInput: ColorInput,
+    colorPicker: ColorPicker,
+    json: JsonInput,
+    multiselect: MultiSelect,
+    number: NumberInput,
+    password: PasswordInput,
+    radio: RadioGroup,
+    segmentedControl: SegmentedControl,
+    select: Select,
+    slider: Slider,
+    switch: Switch,
+    textarea: Textarea,
+    text: TextInput,
+    transferList: TransferList,
+};
 
 /**
  * Form. For more information, see: https://mantine.dev/form/use-form/
@@ -36,12 +75,12 @@ const Form = (props) => {
             <form
                 onSubmit={form.onSubmit((values) => setProps({value: values}))}
             >
-                <TextInput
-                    required
-                    label="Email"
-                    placeholder="your@email.com"
-                    {...form.getInputProps('email')}
-                />
+                {React.createElement(componentMap['text'], {
+                    required: true,
+                    label: 'Email',
+                    placeholder: 'your@email',
+                    ...form.getInputProps('email'),
+                })}
 
                 <Checkbox
                     mt="md"
@@ -73,6 +112,11 @@ Form.displayName = 'Form';
 Form.defaultProps = {};
 
 Form.propTypes = {
+    /**
+     * The ID of this component, used to identify dash components in callbacks
+     */
+    id: PropTypes.string,
+
     /**
      *  Header content
      */
