@@ -73,6 +73,7 @@ import BackgroundImage from "./components/BackgroundImage.react";
 import DemoSlider from "./components/DemoSlider.react";
 import ActionIcon from "./components/ActionIcon.react";
 import ThemeSwitcher from "./components/ThemeSwitcher.react";
+import TransferList from './components/TransferList.react';
 
 export {
     Button,
@@ -85,6 +86,7 @@ export {
     Table,
     Select,
     MultiSelect,
+    TransferList,
     Drawer,
     Checkbox,
     Slider,
